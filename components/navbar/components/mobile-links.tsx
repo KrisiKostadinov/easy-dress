@@ -1,26 +1,24 @@
 "use client";
 
-import { useState } from "react";
-import {
-  DoorClosedIcon,
-  MenuIcon,
-  SearchIcon,
-  ShoppingBagIcon,
-  X,
-} from "lucide-react";
+import { ComponentPropsWithoutRef, useState } from "react";
+import { MenuIcon, SearchIcon, ShoppingBagIcon, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { NavbarLink } from "@/components/navbar/types";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import DisplayLogo from "@/components/navbar/components/display-logo";
 
 type MobileNavbarProps = {
   navbarLinks: NavbarLink[];
-};
+} & ComponentPropsWithoutRef<"div">;
 
-export default function MobileNavbar({ navbarLinks }: MobileNavbarProps) {
+export default function MobileNavbar({
+  navbarLinks,
+  ...props
+}: MobileNavbarProps) {
   const pathname = usePathname();
   const [open, setOpen] = useState<boolean>(false);
 
@@ -29,7 +27,7 @@ export default function MobileNavbar({ navbarLinks }: MobileNavbarProps) {
   };
 
   return (
-    <>
+    <div {...props}>
       <div className="w-full block lg:hidden">
         <div className="flex justify-between items-center gap-3">
           <div className="flex items-center gap-3">
@@ -40,9 +38,7 @@ export default function MobileNavbar({ navbarLinks }: MobileNavbarProps) {
             >
               <MenuIcon />
             </Button>
-            <a href="/" className="text-2xl font-semibold">
-              ИЗИ ДРЕС
-            </a>
+            <DisplayLogo />
           </div>
           <div className="flex gap-3">
             <Button variant="outline" size="icon">
@@ -61,7 +57,7 @@ export default function MobileNavbar({ navbarLinks }: MobileNavbarProps) {
         )}
       >
         <div className="py-4 px-5 flex justify-between items-center gap-3">
-          <h2 className="text-xl font-semibold">Изберете си</h2>
+          <DisplayLogo />
           <Button
             variant={"outline"}
             size={"icon"}
@@ -88,6 +84,6 @@ export default function MobileNavbar({ navbarLinks }: MobileNavbarProps) {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }

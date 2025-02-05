@@ -5,12 +5,14 @@ import MobileLinks from "@/components/navbar/components/mobile-links";
 export default function Navbar() {
   return (
     <div className="bg-white border h-16 max-sm:px-3">
-      <div className="container mx-auto h-16 hidden lg:flex justify-between items-center">
-        <DesktopLinks navbarLinks={navbarLinks} />
-      </div>
-      <div className="container mx-auto h-16 flex lg:hidden justify-between items-center">
-        <MobileLinks navbarLinks={navbarLinks} />
-      </div>
+      <DesktopLinks
+        navbarLinks={navbarLinks}
+        className="container mx-auto h-16 hidden lg:flex justify-between items-center"
+      />
+      <MobileLinks
+        navbarLinks={navbarLinks}
+        className="container mx-auto h-16 flex lg:hidden justify-between items-center"
+      />
     </div>
   );
 }

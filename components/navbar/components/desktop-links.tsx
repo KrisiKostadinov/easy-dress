@@ -1,24 +1,19 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import {
-  ListIcon,
-  MenuIcon,
-  SearchIcon,
-  ShoppingBagIcon,
-  UserIcon,
-} from "lucide-react";
+import { ListIcon, SearchIcon, ShoppingBagIcon, UserIcon } from "lucide-react";
 
 import { NavbarLink } from "@/components/navbar/types";
-import { Button } from "@/components/ui/button";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import DisplayLogo from "@/components/navbar/components/display-logo";
 
 type DesktopLinksProps = {
   navbarLinks: NavbarLink[];
-};
+} & React.ComponentPropsWithoutRef<"div">;
 
-export default function DesktopLinks({ navbarLinks }: DesktopLinksProps) {
+export default function DesktopLinks({ navbarLinks, ...props }: DesktopLinksProps) {
   const pathname = usePathname();
 
   const isActive = (path: string) => {
@@ -26,11 +21,9 @@ export default function DesktopLinks({ navbarLinks }: DesktopLinksProps) {
   };
 
   return (
-    <>
+    <div {...props}>
       <div className="flex items-center gap-3">
-        <a href="/" className="text-2xl font-semibold">
-          ИЗИ ДРЕС
-        </a>
+        <DisplayLogo />
       </div>
       <nav>
         <ul className="flex gap-1">
@@ -63,6 +56,6 @@ export default function DesktopLinks({ navbarLinks }: DesktopLinksProps) {
           <UserIcon />
         </Button>
       </div>
-    </>
+    </div>
   );
 }
