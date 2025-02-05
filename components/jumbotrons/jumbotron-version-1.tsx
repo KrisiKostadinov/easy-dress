@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-
-import Navbar from "@/components/navbar";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
 type JumbotronVersion1Props = {
@@ -44,7 +42,7 @@ export default function JumbotronVersion1({
 
         <div className="relative text-center max-w-3xl mx-auto min-h-[400px] flex flex-col justify-center items-center gap-5 max-md:px-5">
           <h1 className="text-4xl font-semibold">
-            {process.env.WEBSITE_TITLE}
+            {title}
           </h1>
           <p className="text-xl">{text}</p>
           <div className="flex gap-5">

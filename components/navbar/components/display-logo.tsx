@@ -1,11 +1,14 @@
+import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
-export default function DisplayLogo({
-  ...props
-}: ComponentPropsWithoutRef<"a">) {
+type DisplayLogoProps = {} & ComponentPropsWithoutRef<"a">;
+
+export default function DisplayLogo({ ...props }: DisplayLogoProps) {
   return (
-    <a href="/" className="text-2xl font-semibold" {...props}>
-      EasyDress
-    </a>
+    <>
+      <Link href="/" className="text-2xl font-semibold" {...props}>
+        EasyDress
+      </Link>
+    </>
   );
 }
